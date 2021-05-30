@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+   <h:head>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <title>#{titleController.pageTitle}</title>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="navbar navbar-inverse">
+                <div class="navbar-brand">
+                    #{titleController.pageTitle} - Contact Details
+                </div>
+            </div>
+
+            <h:form id="MyForm">
+                <table class="table table-bordered ">
+                    <tr>
+                        <td width ="150" valign="top">Contact Id:</td>
+
+                        <td valign="bottom">
+                            <h:outputLabel id = "Id" >#{editContactViewController.contact.contactId}</h:outputLabel>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td width ="100" valign="top">Name:</td>
+
+                        <td valign="bottom">
+                            <h:outputLabel id = "Name" >#{editContactViewController.contact.firstName += " " += editContactViewController.contact.lastName}</h:outputLabel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="100" valign="top">Email: </td>
+
+                        <td valign="bottom">
+                            <h:outputLabel id = "Email" >#{editContactViewController.contact.contactEmail}</h:outputLabel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="100" valign="top">Phone: </td>
+
+                        <td valign="bottom">
+                            <h:outputLabel id = "Phone" >
+                                #{editContactViewController.contact.contactPhone}
+                                 
+                            </h:outputLabel>
+
+                        </td>
+                    </tr>
+                                        <tr>
+                        <td width ="100" valign="top">Customer Id: </td>
+
+                        <td valign="bottom">
+                            <h:outputLabel id = "customerId" >#{editContactViewController.contact.customer.customerId}</h:outputLabel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width ="100" valign="top">Customer Name: </td>
+
+                        <td valign="bottom">
+                            <h:outputLabel id = "customerName" >#{editContactViewController.contact.customer.customerName}</h:outputLabel>
+                        </td>
+                    </tr>                    
+
+                 </table>
+                 <h:link id="close" value="Close" outcome="contactindex.xhtml"
+ 						          class="btn btn-primary" />
+
+            </h:form>
+        </div>
+    </h:body>
+</html>

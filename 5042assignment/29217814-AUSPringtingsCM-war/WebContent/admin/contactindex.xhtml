@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	<title>#{titleController.pageTitle}</title>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<h:outputScript library="js" name="indexPage.js" />
+</h:head>
+<h:outputStylesheet library="css" name="indexStyle.css" />
+<h:body>
+	<div class="container">
+		<div class="navbar navbar-inverse" style="margin-bottom: 5px;">
+			<div class="navbar-brand">#{titleController.pageTitle} -
+				Customer List</div>
+			<h:form id="logoutform">
+				<div>
+
+					<h:commandButton class="btn btn-link" style="float: right;"
+						id="logout" value="Logout"
+						action="#{indexViewController.logout()}">Logout</h:commandButton>
+				</div>
+			</h:form>
+		</div>
+		<div class="col-md-12 text-center">
+			<ul class="nav nav-pills center-pills">
+				<li role="presentation"><a href="index.xhtml">Customer</a></li>
+				<li role="presentation" class="active"><a
+					href="contactindex.xhtml">Contact</a></li>
+
+				<li><input type="text" placeholder="Search"
+					style="margin-top: 7px; margin-right: 7px; margin-left: 10px;"></input></li>
+				<li class="btn-group">
+					<button type="button" class="btn btn-default dropdown-toggle"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Action <span class="caret"></span>
+					</button> <!--  https://getbootstrap.com/docs/3.3/components/#btn-dropdowns -->
+					<ul class="dropdown-menu">
+						<li><a href="#">Action</a></li>
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<h:form id="MyContactForm">
+			<table id="contacttable" class="table table-bordered table-striped">
+				<!-- For each customer in contacts ArrayList... -->
+				<thead>
+					<tr>
+
+						<th><h:outputLabel id="contactId" value="Contact id" /></th>
+						<th><h:outputLabel id="firstName" value="Firstname" /></th>
+						<th><h:outputLabel id="lastName" value="Lastname" /></th>
+						<th><h:outputLabel id="contactEmail" value="Email" /></th>
+
+						<th><h:outputLabel id="customerid"
+								style="font-style: italic;" value="Customer id" /></th>
+						<th><h:outputLabel id="customername"
+								style="font-style: italic;" value="Customer name" /></th>
+						<th><h:outputLabel value="Operations" /></th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<ui:repeat id="MyContactRepeat" value="#{contactViewController.contacts}"
+						var="contact" varStatus="status">
+
+						<tr>
+							
+							<td><h:outputText
+									value="#{contactViewController.contacts.get(status.index).contactId}"
+									id="Id" /></td>
+							<td><h:outputText
+									value="#{contactViewController.contacts.get(status.index).firstName}"
+									id="Firstname" /></td>
+							<td><h:outputText
+									value="#{contactViewController.contacts.get(status.index).lastName}"
+									id="Lastname" /></td>
+							<td><h:outputText id="outEmail"
+									value="#{contactViewController.contacts.get(status.index).contactEmail}" />
+							</td>
+							<td><h:outputText id="outCustomerid"
+									style="color: darkgrey;"
+									value="#{contactViewController.contacts.get(status.index).customer.customerId}"></h:outputText>
+							</td>
+							<td><h:outputText id="outCustomername"
+									style="color: darkgrey;"
+									value="#{contactViewController.contacts.get(status.index).customer.customerName}"></h:outputText>
+							</td>
+							<td><h:link value="View | "
+									outcome="admin/contactdetail.xhtml">
+									<!-- pass the parameter to next page, the param name is customerID, and the value is index + 1.
+                                You can get the value from next page using the indexController -->
+									<f:param name="contactIndex" value="#{status.index + 1}" />
+								</h:link> <h:link value="Edit | " outcome="admin/contactedit.xhtml">
+									<!-- pass the parameter to next page, the param name is customerID, and the value is index + 1.
+                                You can get the value from next page using the indexController -->
+									<f:param name="contactIndex" value="#{status.index + 1}" />
+								</h:link> <h:commandLink value="Delete"
+									action="#{removeContact.removeContact(contactViewController.contacts.get(status.index).contactId)}"
+									disabled="#{contactViewController.contacts.get(status.index).contactId == null}">
+								</h:commandLink> <h:outputText value=" " /></td>
+
+
+						</tr>
+
+					</ui:repeat>
+				</tbody>
+			</table>
+			<div>
+				<h:commandButton id="add" value="Add Contacts"
+					action="addcontact.xhtml" class="btn btn-primary" />
+				<h:commandButton id="viewAllContact" value="View All"
+					style="margin-left: 20px;" action="#{searchContact.searchAll()}"
+					class="btn btn-primary">
+					<!-- <f:param name="customerID" value="#{status.index + 1}"/> -->
+					<f:param name="customerID" value="#{status.index + 1}" />
+
+				</h:commandButton>
+			</div>
+			<div>
+				<h:inputText value="#{searchContact.searchByInt}" id="searchByContactId"
+					required="true"
+					onchange="if (document.getElementById('MyContactForm:searchById').value.trim() == '') {document.getElementById('MyContactForm:searchById').value = 0;} " />
+				<h:commandButton id="searchContactId" value="Search by Id"
+					style="margin-left: 10px;"
+					action="#{searchContact.searchContactById(searchContact.searchByInt)}"
+					class="btn btn-primary">
+					<f:param name="contactId" value="#{status.index + 1}" />
+				</h:commandButton>
+			</div>
+
+
+
+		</h:form>
+
+	</div>
+</h:body>
+</html>

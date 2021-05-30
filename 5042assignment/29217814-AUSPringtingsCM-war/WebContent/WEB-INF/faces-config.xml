@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+    
+    <!-- reference: https://mkyong.com/jsf2/jsf-form-action-navigation-rule-example/ -->
+    <navigation-rule>
+	<from-view-id>/admin/index.xhtml</from-view-id>
+	<navigation-case>
+		<from-outcome>welcome.xhtml</from-outcome>
+		<to-view-id>welcome.xhtml</to-view-id>
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>admin/detail.xhtml</from-outcome>
+		<to-view-id>faces/admin/detail.xhtml</to-view-id>
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>admin/contactindex.xhtml</from-outcome>
+		<to-view-id>faces/admin/contactindex.xhtml</to-view-id>
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>admin/edit.xhtml</from-outcome>
+		<to-view-id>faces/admin/edit.xhtml</to-view-id>
+	</navigation-case>
+	<navigation-case>
+		<from-outcome>add.xhtml</from-outcome>
+		<to-view-id>faces/admin/add.xhtml</to-view-id>
+	</navigation-case>   
+	</navigation-rule>
+	
+	<navigation-rule>
+	<from-view-id>/admin/detail.xhtml</from-view-id>
+	<navigation-case>
+		<from-outcome>index.xhtml</from-outcome>
+		<to-view-id>faces/admin/index.xhtml</to-view-id>
+	</navigation-case>
+	  </navigation-rule>
+	
+		<navigation-rule>
+	<from-view-id>/admin/edit.xhtml</from-view-id>
+	<navigation-case>
+		<from-outcome>index.xhtml</from-outcome>
+		<to-view-id>faces/admin/index.xhtml</to-view-id>
+	</navigation-case>
+	  </navigation-rule>
+	  
+	  <navigation-rule>
+	<from-view-id>/admin/add.xhtml</from-view-id>
+	<navigation-case>
+		<from-outcome>faces/index.xhtml</from-outcome>
+		<to-view-id>faces/admin/index.xhtml</to-view-id>
+	</navigation-case>
+	  </navigation-rule>
+	  
+	  	  <navigation-rule>
+	<from-view-id>/admin/contactindex.xhtml</from-view-id>
+	<navigation-case>
+		<from-outcome>admin/contactdetail.xhtml</from-outcome>
+		<to-view-id>admin/contactdetail.xhtml</to-view-id>
+	</navigation-case>
+		<navigation-case>
+		<from-outcome>admin/contactedit.xhtml</from-outcome>
+		<to-view-id>faces/admin/contactedit.xhtml</to-view-id>
+	</navigation-case>
+	  </navigation-rule>
+	 
+	 	  <navigation-rule>
+	<from-view-id>/admin/addcontact.xhtml</from-view-id>
+	<navigation-case>
+		<from-outcome>faces/contactindex.xhtml</from-outcome>
+		<to-view-id>admin/contactindex.xhtml</to-view-id>
+	</navigation-case>
+	  </navigation-rule>
+
+</faces-config>

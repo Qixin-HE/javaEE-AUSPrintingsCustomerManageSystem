@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <title>#{titleController.pageTitle}</title>
+        <style>
+	*{text-align: center;}
+	
+	.table {
+   margin: auto;
+   width: 40% !important; 
+}
+	</style>
+    </h:head>
+
+<h:body>
+	<div class="container">
+		<div class="navbar navbar-inverse">
+			<div class="navbar-brand">#{titleController.pageTitle} - Login
+			</div>
+		</div>
+		<h3>Login</h3>
+		<form method="post" action="j_security_check">
+			<table class="table table-bordered table-striped">
+				<!-- For each customer in customers ArrayList... -->
+				<tr>
+					<td><label for="j_username">Username:</label> <input
+						type="text" name="j_username" /></td>
+				</tr>
+				<tr>
+					<td><label for="j_password">Password:</label> <input
+						type="password" name="j_password" /></td>
+				</tr>
+				<tr>
+					<td><input style="padding: 12px 20px;color: black;background-color: #6da7e2c7;" type="submit" value="Submit" /></td>
+				</tr>
+			</table>
+
+
+
+		</form>
+
+	</div>
+</h:body>
+
+</html>

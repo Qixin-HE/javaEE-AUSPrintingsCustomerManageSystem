@@ -1,0 +1,20 @@
+@charset "UTF-8";
+.center-pills {
+	display: inline-block;
+}
+
+.nav>li>a {
+	padding-left: 40px;
+	padding-right: 40px;
+}
+.navbar-brand {
+    text-shadow: 1px 1px 4px rgb(0 0 0 / 85%);
+}
+.nav-pills>li.active>a{
+	font-size: medium;
+}
+th:hover{
+     cursor:pointer;
+    background:#AAA;
+    
+}

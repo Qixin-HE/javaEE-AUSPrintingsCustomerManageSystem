@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<title>#{titleController.pageTitle}</title>
+</h:head>
+<h:body>
+	<div class="container">
+		<div class="navbar navbar-inverse">
+			<div class="navbar-brand">#{titleController.pageTitle} - Add
+				Contact</div>
+		</div>
+		<div>
+			<f:view>
+				<h:form>
+					<h1>
+						<h:outputText value="Create Contact" />
+					</h1>
+					<table class="table table-bordered ">
+						<tr>
+							<td colspan="2" style="font-size: larger;"><h:outputLabel
+									value="Basic Contact Information" for="contact" /></td>
+						</tr>
+
+						<tr>
+							<td><h:outputLabel value="First Name:" for="firstName" /></td>
+							<td><h:inputText id="firstName"
+									value="#{addContactViewController.contact.firstName}"
+									title="firstName" /></td>
+
+						</tr>
+
+						<tr>
+							<td><h:outputLabel value="Last Name:" for="lastName" /></td>
+							<td><h:inputText id="lastName"
+									value="#{addContactViewController.contact.lastName}"
+									title="lastName" /></td>
+
+						</tr>
+						<tr>
+							<td><h:outputLabel value="Contact Email:" for="contactEmail" />
+							</td>
+							<td><h:inputText id="contactEmail"
+									value="#{addContactViewController.contact.contactEmail}"
+									title="contactEmail" /></td>
+
+						</tr>
+
+						<tr>
+							<td><h:outputLabel value="Contact Phone:" for="contactPhone" />
+							</td>
+							<td><h:inputText id="contactPhone"
+									value="#{addContactViewController.contact.contactPhone}"
+									title="contactPhone" /></td>
+
+						</tr>
+						<tr>
+							<td colspan="2" style="font-size: larger;"><h:outputLabel
+									value="Belonging Company" for="contact" /></td>
+						</tr>
+						<tr>
+							<td width="100" valign="top">Belong to - Customer id:</td>
+
+							<td valign="bottom"><h:outputLabel id="showcutomerId"
+									value="#{addContactViewController.contact.customer.customerId}"></h:outputLabel></td>
+						</tr>
+
+						<tr>
+							<td width="100" valign="top">Belong to - Customer name:</td>
+
+							<td valign="bottom"><h:outputLabel id="cutomerName"
+									value="#{addContactViewController.contact.customer.customerName}"></h:outputLabel></td>
+						</tr>
+						<tr>
+							<td width="100" valign="top">Change/Add to - Customer id:</td>
+
+							<td valign="bottom"><h:inputText id="cutomerId"
+									value="#{addContactViewController.contact.customer.customerId}"></h:inputText></td>
+						</tr>
+
+
+
+					</table>
+
+					<h:commandButton id="submit" value="Submit"
+						action="#{addContactViewController.addContact(contact)}"
+						class="btn btn-primary" />
+					<h:link id="close" value="Close" style="margin-left: 20px;"
+						outcome="faces/contactindex.xhtml" class="btn btn-primary" />
+
+				</h:form>
+
+			</f:view>
+		</div>
+	</div>
+
+</h:body>
+</html>

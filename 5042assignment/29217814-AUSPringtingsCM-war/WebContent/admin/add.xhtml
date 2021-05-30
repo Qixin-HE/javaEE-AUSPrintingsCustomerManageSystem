@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<title>#{titleController.pageTitle}</title>
+</h:head>
+<h:body>
+	<div class="container">
+		<div class="navbar navbar-inverse">
+			<div class="navbar-brand">#{titleController.pageTitle} - Add
+				Customer</div>
+		</div>
+		<div>
+			<f:view>
+				<h:form>
+					<h1>
+						<h:outputText value="Create Customer" />
+					</h1>
+					<table class="table table-bordered ">
+						<tr>
+							<td colspan="2" style="font-size: larger;"><h:outputLabel
+									value="Basic Information" for="company" /></td>
+						</tr>
+
+						<tr>
+							<td><h:outputLabel value="CustomerName:" for="customerName" />
+							</td>
+							<td><h:inputText id="customerName"
+									value="#{customer.customerName}" title="CustomerName" /></td>
+
+						</tr>
+
+						<tr>
+							<td><h:outputLabel value="Company Email" for="email" /></td>
+							<td><h:inputText id="email" value="#{customer.email}"
+									title="email" /></td>
+
+						</tr>
+						<tr>
+							<td><h:outputLabel value="Phone:" for="phone" /></td>
+							<td><h:inputText id="phone" value="#{customer.phone}"
+									title="phone" /></td>
+
+						</tr>
+
+						<tr>
+							<td><h:outputLabel value="Type of industry:" for="industry" /></td>
+							<td><h:inputText id="industry" value="#{customer.industry}"
+									title="Industry" /></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel value="StaffId:" for="staffId" /></td>
+
+							<td><h:selectOneMenu value = "#{customer.staffId}" style="width: 155px;" >
+							<f:selectItem itemValue = "1" itemLabel = "1" /> 
+							<f:selectItem itemValue = "2" itemLabel = "2" /> 
+							<f:selectItem itemValue = "3" itemLabel = "3" /> 
+							<f:selectItem itemValue = "4" itemLabel = "4" /> 
+							<f:selectItem itemValue = "5" itemLabel = "5" /> 
+								
+							</h:selectOneMenu></td>
+						</tr>
+						<tr>
+							<td colspan="2" style="font-size: larger;"><h:outputLabel
+									value="Company Address" for="address" /></td>
+						</tr>
+
+						<tr>
+							<td width="200"><h:outputLabel value="streetNumber"
+									for="streetNumber" /></td>
+							<td><h:inputText id="streetNumber"
+									value="#{customer.streetNumber}" title="streetNumber" /></td>
+
+						</tr>
+
+						<tr>
+							<td><h:outputLabel value="streetAddress" for="streetAddress" />
+							</td>
+							<td><h:inputText id="streetAddress"
+									value="#{customer.streetAddress}" title="streetAddress" /></td>
+
+						</tr>
+
+						<tr>
+							<td><h:outputLabel value="suburb" for="suburb" /></td>
+							<td><h:inputText id="suburb" value="#{customer.suburb}"
+									title="suburb" /></td>
+
+						</tr>
+
+						<tr>
+							<td><h:outputLabel value="postcode" for="postcode" /></td>
+							<td><h:inputText id="postcode" value="#{customer.postcode}"
+									title="postcode" /></td>
+
+						</tr>
+
+						<tr>
+							<td><h:outputLabel value="state" for="state" /></td>
+							<td><h:inputText id="state" value="#{customer.state}"
+									title="state" /></td>
+
+						</tr>
+
+
+
+
+
+					</table>
+
+					<h:commandButton id="submit" value="Submit"
+						action="#{addViewController.addCustomer(customer)}"
+						class="btn btn-primary" />
+					<h:link id="close" value="Close" style="margin-left: 20px;"
+						outcome="faces/index.xhtml" class="btn btn-primary" />
+
+				</h:form>
+
+			</f:view>
+		</div>
+	</div>
+
+</h:body>
+
+</html>
